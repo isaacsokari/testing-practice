@@ -1,27 +1,32 @@
+const assert = require('assert');
 const { forEach, map } = require('./index');
 
-let sum = 0;
+const test = (desc, func) => {
+  console.log('----', desc);
+  try {
+    func();
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
-forEach([1, 2, 3], (value) => {
-  sum += value;
+test('testing forEach', () => {
+  let sum = 0;
+  forEach([1, 2, 3], (value) => {
+    sum += value;
+  });
+
+  assert.strictEqual(sum, 6);
 });
 
-if (sum !== 6) {
-  throw new Error('Expected sum of array to equal 6');
-}
+test('testing map', () => {
+  const result = map([1, 2, 3], (value) => {
+    return value * 2;
+  });
 
-const result = map([1, 2, 3], (value) => {
-  return value * 2;
+  assert.strictEqual(result[0], 2);
+
+  assert.strictEqual(result[1], 4);
+
+  assert.strictEqual(result[2], 6);
 });
-
-if (result[0] !== 2) {
-  throw new Error(`Expected 2 but found  ${result[0]}`);
-}
-
-if (result[1] !== 4) {
-  throw new Error(`Expected 4 but found  ${result[1]}`);
-}
-
-if (result[2] !== 6) {
-  throw new Error(`Expected 6 but found  ${result[2]}`);
-}
