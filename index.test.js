@@ -10,7 +10,7 @@ const test = (desc, func) => {
   }
 };
 
-test('testing forEach', () => {
+it('The forEach function', () => {
   let sum = 0;
   forEach([1, 2, 3], (value) => {
     sum += value;
@@ -19,7 +19,7 @@ test('testing forEach', () => {
   assert.strictEqual(sum, 6);
 });
 
-test('testing map', () => {
+it('The map function', () => {
   const result = map([1, 2, 3], (value) => {
     return value * 2;
   });
