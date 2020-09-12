@@ -24,5 +24,6 @@ it('The map function', () => {
     return value * 2;
   });
 
-  assert.deepStrictEqual(result, [2, 4, 6]);
+  assert.deepStrictEqual(result, [2, 4, 6
+  ]);
 });
