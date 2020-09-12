@@ -40,12 +40,23 @@ it('dropdown is not active on page load', () => {
 });
 
 it('after input, dropdown shows up', async () => {
-  document.querySelector('input').value = 'avengers';
-
-  document.querySelector('input').dispatchEvent(new Event('input'));
+  const input = document.querySelector('input');
+  input.value = 'avengers';
+  input.dispatchEvent(new Event('input'));
 
   await waitFor('.dropdown-item');
 
   const dropdown = document.querySelector('.dropdown');
   expect(dropdown.className).to.include('is-active');
+});
+
+it('number of movies returned', async () => {
+  const input = document.querySelector('input');
+  input.value = 'avengers';
+  input.dispatchEvent(new Event('input'));
+
+  await waitFor('.dropdown-item');
+
+  const item = document.querySelectorAll('.dropdown-item');
+  expect(item).to.have.lengthOf(3);
 });
