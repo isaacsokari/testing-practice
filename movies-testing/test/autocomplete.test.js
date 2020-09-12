@@ -1,3 +1,20 @@
+const waitFor = (selector) => {
+  return new Promise((resolve, reject) => {
+    const intervalId = setInterval(() => {
+      if (document.querySelector(selector)) {
+        clearInterval(intervalId);
+        clearTimeout(timeoutId);
+        resolve();
+      }
+    }, 50);
+
+    const timeoutId = setTimeout(() => {
+      clearInterval(intervalId);
+      reject();
+    }, 3000);
+  });
+};
+
 beforeEach(() => {
   document.querySelector('#target').innerHTML = '';
 
@@ -22,12 +39,13 @@ it('dropdown is not active on page load', () => {
   expect(dropdown.className).to.not.include('is-active');
 });
 
-it('after input, dropdown shows up', () => {
+it('after input, dropdown shows up', async () => {
   document.querySelector('input').value = 'avengers';
 
   document.querySelector('input').dispatchEvent(new Event('input'));
 
+  await waitFor('.dropdown-item');
+
   const dropdown = document.querySelector('.dropdown');
-  console.log(dropdown.className);
   expect(dropdown.className).to.include('is-active');
 });
