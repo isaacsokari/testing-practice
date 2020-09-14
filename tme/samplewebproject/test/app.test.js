@@ -9,5 +9,5 @@ it('has a text input', async () => {
 
   const input = dom.window.document.querySelector('input');
 
-  assert.strictEqual(input.type, 'text', 'Document should have a text input');
+  assert.strictEqual(input.type, 'submit', 'Document should have a text input');
 });
