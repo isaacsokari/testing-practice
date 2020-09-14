@@ -19,6 +19,6 @@ it('should sum an array', () => {
   numbers[2] = 10;
 });
 
-it('before each runs before each val', () => {
+it('beforeEach runs before each test', () => {
   assert.deepStrictEqual(numbers, [1, 2, 3]);
 });
