@@ -13,3 +13,5 @@ form.addEventListener('submit', (e) => {
     header.innerText = 'Invalid Email';
   }
 });
+
+window.scriptLoaded = true;
